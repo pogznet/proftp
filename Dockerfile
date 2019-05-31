@@ -21,8 +21,11 @@ RUN chown -R ftp:ftp /rawdata/rx
 
 VOLUME /rawdata
 
-EXPOSE 21
-EXPOSE 20
+EXPOSE 20 21
+
+# Create the user
+ADD		docker-entrypoint.sh /usr/local/sbin/docker-entrypoint.sh
+ENTRYPOINT	["/usr/local/sbin/docker-entrypoint.sh"]
 
 #ENTRYPOINT /launch
 CMD ["proftpd", "--nodaemon", "-c", "/etc/proftpd/proftpd.conf"]
