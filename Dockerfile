@@ -1,3 +1,5 @@
+FROM ubuntu
+
 RUN apt-get update -y
 RUN apt-get install -y default-jdk
 RUN apt-get install -y software-properties-common
