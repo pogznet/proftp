@@ -8,7 +8,7 @@ RUN apt update -y
 RUN apt install -y openjdk-11-jdk
 RUN apt-get install -y proftpd
 
-ADD launch /launch
+#ADD launch /launch
 ADD proftpd.conf /etc/proftpd/proftpd.conf
 RUN chown root:root /etc/proftpd/proftpd.conf
 RUN groupadd ftp
@@ -24,4 +24,5 @@ VOLUME /rawdata
 EXPOSE 21
 EXPOSE 20
 
-ENTRYPOINT /launch
+#ENTRYPOINT /launch
+CMD ["proftpd", "--nodaemon", "-c", "/etc/proftpd/proftpd.conf"]
